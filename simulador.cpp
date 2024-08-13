@@ -150,7 +150,7 @@ int main()
   const unsigned int cacheLength = 1024 * 4; // input (tamanho total da cache)
   const unsigned int lineLength = 1024 * 1;  // input (tamanho de cada linha)
   unsigned int numberOfLinesPerSet = 2;      // input (tamanho de cada grupo)
-  const unsigned int numInput = 2;           // input
+  const unsigned int numInput = 2;           // quantidade de endereços de entrada
 
   unsigned int numberOfLines = cacheLength / lineLength;
   unsigned int offset = log2(lineLength);
