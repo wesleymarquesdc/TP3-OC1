@@ -12,8 +12,8 @@ using namespace std;
  */
 struct Pair
 {
-  unsigned int valid; /**< Indicador de validade (1 para válido, 0 para inválido). */
-  uint32_t addr;      /**< Endereço armazenado na cache. */
+  bool valid;    /**< Indicador de validade (1 para válido, 0 para inválido). */
+  uint32_t addr; /**< Endereço armazenado na cache. */
 
   /**
    * @brief Construtor padrão que inicializa a estrutura.
@@ -89,7 +89,7 @@ public:
     unsigned int currentSet = addr % numberOfSets;
     unsigned int indexSet = currentSet * numberOfLinesPerSet;
 
-    // itera sobre todos os campos dentro do set para verificar se há algum endereço desoculado (valid = 0) ou se bloco já está presente
+    // itera sobre todos os campos dentro do set para verificar se há algum endereço desocupado (valid = 0) ou se bloco já está presente
     unsigned int upperLimit = indexSet + numberOfLinesPerSet;
     for (unsigned int i = indexSet; i < upperLimit; i++)
     {
@@ -106,7 +106,7 @@ public:
       }
       if (arrAddr[i].valid && arrAddr[i].addr == addr)
       {
-        // adicionar no mapa de novo? (não parece fazer sentido, pois teremos o mesmo indice duplicado, porém, foi 'adicionado novamente'...)
+        // adicionar na fila de novo? (não parece fazer sentido, pois teremos o mesmo indice duplicado, porém, foi 'adicionado novamente'...)
         hits++;
 
         if (lastWasMiss)
